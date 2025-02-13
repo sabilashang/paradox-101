@@ -15,6 +15,12 @@
             background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
             margin: 0;
             overflow: hidden;
+            transition: background 0.5s ease;
+        }
+
+        /* Dark mode styling for the body */
+        body.dark-mode {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
         }
 
         /* Center-align text within the container */
@@ -39,9 +45,20 @@
             transform: translateX(-50%);
         }
 
+        /* Dark mode styling for the button */
+        .dark-mode .neumorphic-button {
+            background: #34495e;
+            box-shadow: 8px 8px 16px #1c2833, -8px -8px 16px #5d6d7e;
+        }
+
         /* Change button shadow on hover for a pressed effect */
         .neumorphic-button:hover {
             box-shadow: inset 8px 8px 16px #b1b1b1, inset -8px -8px 16px #ffffff;
+        }
+
+        /* Dark mode hover effect */
+        .dark-mode .neumorphic-button:hover {
+            box-shadow: inset 8px 8px 16px #1c2833, inset -8px -8px 16px #5d6d7e;
         }
 
         /* Styling for the fact display area */
@@ -57,6 +74,12 @@
             transition: all 0.5s ease;
             opacity: 0;
             transform: translateY(20px);
+        }
+
+        /* Dark mode styling for the fact display area */
+        .dark-mode .fact-display {
+            background: #34495e;
+            box-shadow: 8px 8px 16px #1c2833, -8px -8px 16px #5d6d7e;
         }
 
         /* Show the fact display area */
@@ -77,6 +100,12 @@
         .fact-details p {
             margin: 5px 0;
         }
+
+        /* Dark mode text color */
+        .dark-mode .fact-details p,
+        .dark-mode h2 {
+            color: #ecf0f1;
+        }
     </style>
 </head>
 <body>
@@ -91,6 +120,8 @@
         </div>
         <!-- Button to trigger the display of a random fact -->
         <button id="randomFactButton" class="neumorphic-button">Show Random Fact</button>
+        <!-- Button to toggle dark mode -->
+        <button id="toggleDarkMode" class="neumorphic-button" style="top: 20px;">Toggle Dark Mode</button>
     </div>
     <script>
         const facts = [
@@ -159,6 +190,10 @@
             const factDetails = document.getElementById('factDetails');
             factDetails.style.display = 'block';
             factDetails.classList.toggle('expanded');
+        });
+
+        document.getElementById('toggleDarkMode').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
         });
     </script>
 </body>
