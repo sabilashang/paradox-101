@@ -41,11 +41,8 @@
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
             white-space: nowrap; /* Prevent text wrapping */
+            margin-top: 20px; /* Add spacing above the button */
         }
 
         /* Dark mode styling for the button */
@@ -210,10 +207,6 @@
             const factDetails = document.getElementById('factDetails');
             factDetails.style.display = 'block';
             factDetails.classList.toggle('expanded');
-
-            // Move the button further down after the first click
-            const randomFactButton = document.getElementById('randomFactButton');
-            randomFactButton.style.bottom = '10px';
         });
 
         document.getElementById('toggleDarkMode').addEventListener('click', () => {
