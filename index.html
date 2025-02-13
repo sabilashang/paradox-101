@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Travel Paradoxes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0e0e0;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .neumorphic-button {
+            background: #e0e0e0;
+            border-radius: 50px;
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .neumorphic-button:hover {
+            box-shadow: inset 20px 20px 60px #bebebe, inset -20px -20px 60px #ffffff;
+        }
+
+        .fact-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e0e0e0;
+            border-radius: 20px;
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .fact-details {
+            display: none;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .fact-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="randomFactButton" class="neumorphic-button">Show Random Fact</button>
+        <div id="factDisplay" class="fact-display">
+            <h2 id="factName"></h2>
+            <div id="factDetails" class="fact-details">
+                <p id="factDescription"></p>
+                <p id="factExample"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const facts = [
+            {
+                fact: "The Grandfather Paradox",
+                description: "This paradox occurs when a time traveler goes back in time and prevents their grandfather from meeting their grandmother, potentially preventing the time traveler's own existence.",
+                example: "Imagine a time traveler named Alex who goes back to 1920 and accidentally prevents their grandfather from meeting their grandmother. As a result, Alex might never be born."
+            },
+            {
+                fact: "The Bootstrap Paradox",
+                description: "Also known as the Ontological Paradox, it involves an object or information sent back in time, becoming the cause of itself in the future, creating a loop with no clear origin.",
+                example: "A scientist receives a book from their future self, learns from it, and later travels back in time to give the book to their past self."
+            },
+            {
+                fact: "The Predestination Paradox",
+                description: "This paradox occurs when a time traveler is caught in a loop of events that predestines them to travel back in time, ensuring the events that led to the time travel occur.",
+                example: "A person travels back in time to save someone, only to realize their actions were the cause of the event they were trying to prevent."
+            },
+            {
+                fact: "The Polchinski's Paradox",
+                description: "A theoretical paradox involving a billiard ball sent through a wormhole, where it emerges in the past and collides with its past self, preventing its original journey.",
+                example: "A billiard ball is shot into a wormhole and emerges in the past, colliding with its earlier self and preventing the original shot."
+            },
+            {
+                fact: "The Self-Consistency Principle",
+                description: "Proposed by physicist Igor Novikov, it suggests that any actions taken by a time traveler were always part of history, thus avoiding paradoxes by ensuring consistency.",
+                example: "A time traveler goes back to witness a historical event and realizes their presence was always part of the event."
+            },
+            {
+                fact: "The Parallel Universes Theory",
+                description: "This theory suggests that time travel might create alternate timelines or parallel universes, where changes in the past do not affect the original timeline.",
+                example: "A traveler changes an event in the past, creating a new timeline, while the original timeline remains unchanged."
+            },
+            {
+                fact: "The Butterfly Effect",
+                description: "A concept where small changes in the past can lead to significant and unpredictable consequences in the future, often used in discussions of time travel paradoxes.",
+                example: "A time traveler steps on a butterfly in the past, leading to drastic changes in the present."
+            },
+            {
+                fact: "The Time Loop Paradox",
+                description: "Occurs when a sequence of events repeats itself in a loop, potentially trapping the time traveler in a never-ending cycle.",
+                example: "A person relives the same day repeatedly, with each iteration starting over at the same point in time."
+            },
+            {
+                fact: "The Temporal Paradox",
+                description: "A general term for any paradox that arises from the possibility of time travel, often involving contradictions or logical inconsistencies.",
+                example: "A person travels back in time and inadvertently prevents their own birth, creating a contradiction."
+            },
+            {
+                fact: "The Information Paradox",
+                description: "Involves the transfer of information back in time, where the information has no clear origin, similar to the Bootstrap Paradox.",
+                example: "A musician receives a song from their future self, records it, and later sends it back in time to their past self."
+            }
+        ];
+
+        document.getElementById('randomFactButton').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const selectedFact = facts[randomIndex];
+
+            document.getElementById('factName').textContent = selectedFact.fact;
+            document.getElementById('factDescription').textContent = selectedFact.description;
+            document.getElementById('factExample').textContent = selectedFact.example;
+
+            const factDetails = document.getElementById('factDetails');
+            factDetails.style.display = 'block';
+            factDetails.classList.toggle('expanded');
+        });
+    </script>
+</body>
+</html>
