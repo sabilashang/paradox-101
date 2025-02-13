@@ -5,51 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Travel Paradoxes</title>
     <style>
+        /* Basic styling for the body to center content and set background color */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #e0e0e0;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
             margin: 0;
+            overflow: hidden;
         }
 
+        /* Center-align text within the container */
         .container {
             text-align: center;
+            position: relative;
         }
 
+        /* Styling for the button using Neumorphism */
         .neumorphic-button {
-            background: #e0e0e0;
+            background: #f5f7fa;
             border-radius: 50px;
-            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            box-shadow: 8px 8px 16px #b1b1b1, -8px -8px 16px #ffffff;
             border: none;
             padding: 15px 30px;
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
+        /* Change button shadow on hover for a pressed effect */
         .neumorphic-button:hover {
-            box-shadow: inset 20px 20px 60px #bebebe, inset -20px -20px 60px #ffffff;
+            box-shadow: inset 8px 8px 16px #b1b1b1, inset -8px -8px 16px #ffffff;
         }
 
+        /* Styling for the fact display area */
         .fact-display {
+            display: none;
             margin-top: 20px;
             padding: 20px;
-            background: #e0e0e0;
+            background: #f5f7fa;
             border-radius: 20px;
-            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            box-shadow: 8px 8px 16px #b1b1b1, -8px -8px 16px #ffffff;
             max-width: 500px;
             margin: 20px auto;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
+        /* Show the fact display area */
+        .fact-display.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Initially hide the fact details */
         .fact-details {
             display: none;
             margin-top: 10px;
             text-align: left;
         }
 
+        /* Margin for paragraphs within fact details */
         .fact-details p {
             margin: 5px 0;
         }
@@ -57,7 +81,7 @@
 </head>
 <body>
     <div class="container">
-        <button id="randomFactButton" class="neumorphic-button">Show Random Fact</button>
+        <!-- Area to display the selected fact -->
         <div id="factDisplay" class="fact-display">
             <h2 id="factName"></h2>
             <div id="factDetails" class="fact-details">
@@ -65,6 +89,8 @@
                 <p id="factExample"></p>
             </div>
         </div>
+        <!-- Button to trigger the display of a random fact -->
+        <button id="randomFactButton" class="neumorphic-button">Show Random Fact</button>
     </div>
     <script>
         const facts = [
@@ -128,6 +154,8 @@
             document.getElementById('factDescription').textContent = selectedFact.description;
             document.getElementById('factExample').textContent = selectedFact.example;
 
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.classList.add('show');
             const factDetails = document.getElementById('factDetails');
             factDetails.style.display = 'block';
             factDetails.classList.toggle('expanded');
