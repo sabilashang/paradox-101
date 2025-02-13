@@ -106,6 +106,23 @@
         .dark-mode h2 {
             color: #ecf0f1;
         }
+
+        /* Dark mode toggle button */
+        .dark-mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Rotate animation for the toggle button */
+        .dark-mode-toggle:active {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
@@ -121,7 +138,7 @@
         <!-- Button to trigger the display of a random fact -->
         <button id="randomFactButton" class="neumorphic-button">Show Random Fact</button>
         <!-- Button to toggle dark mode -->
-        <button id="toggleDarkMode" class="neumorphic-button" style="top: 20px;">Toggle Dark Mode</button>
+        <button id="toggleDarkMode" class="dark-mode-toggle">☀️</button>
     </div>
     <script>
         const facts = [
@@ -194,6 +211,8 @@
 
         document.getElementById('toggleDarkMode').addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
+            const toggleButton = document.getElementById('toggleDarkMode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? '🌙' : '☀️';
         });
     </script>
 </body>
