@@ -27,6 +27,8 @@
         .container {
             text-align: center;
             position: relative;
+            width: 80%; /* Ensure the container is wide enough */
+            max-width: 600px; /* Set a max width to prevent excessive stretching */
         }
 
         /* Styling for the button using Neumorphism */
@@ -43,6 +45,7 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
+            white-space: nowrap; /* Prevent text wrapping */
         }
 
         /* Dark mode styling for the button */
